@@ -15,6 +15,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
+import steps.AccountStep;
+import steps.LoginStep;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -27,6 +29,8 @@ public class BaseTest {
     AccountsPage accountsPage;
     MainPage mainPage;
     NewAccountModal newAccountModal;
+    LoginStep loginStep;
+    AccountStep accountStep;
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true, description = "Настройка драйвера")
@@ -51,6 +55,8 @@ public class BaseTest {
         accountsPage = new AccountsPage(driver);
         mainPage = new MainPage(driver);
         newAccountModal = new NewAccountModal(driver);
+        accountStep = new AccountStep(driver);
+        loginStep = new LoginStep(driver);
     }
 
     @AfterMethod(alwaysRun = true, description = "Закрытие браузера")
