@@ -1,7 +1,7 @@
 package steps;
 
-import Pages.LoginPage;
-import Pages.MainPage;
+import pages.LoginPage;
+import pages.MainPage;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 

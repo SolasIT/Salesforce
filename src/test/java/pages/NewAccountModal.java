@@ -1,11 +1,9 @@
-package Pages;
+package pages;
 
 import dto.Account;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import wrappers.Checkbox;
 import wrappers.Input;
@@ -59,13 +57,16 @@ public class NewAccountModal extends BasePage {
         new TextArea(driver, "Billing Street").write(account.getBillingStreet());
         new TextArea(driver, "Shipping Street").write(account.getShippingStreet());
         new Checkbox(driver, "VIP Client").check();
-        new Checkbox(driver, "TeachingSkills").check();
+        new Checkbox(driver, "TeachMeSkills").check();
         return this;
     }
 
     public AccountsPage saveButton() {
-        log.info("Click Save bautton");
-        driver.findElement(saveButton).click();
+        log.info("Click Save button using JavaScript");
+        WebElement button = driver.findElement(saveButton);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].focus();", button);
+        js.executeScript("arguments[0].click();", button);
         return new AccountsPage(driver);
     }
 }
